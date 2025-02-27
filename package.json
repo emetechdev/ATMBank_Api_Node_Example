@@ -1,0 +1,38 @@
+{
+    "name": "autoservterm",
+    "version": "1.0.0",
+    "description": "Ejercicio backend para terminal de autoservicio",
+    "main": "main.ts",
+    "scripts": {
+        "test": "jest",
+        "test --watch": "jest --watch",
+        "test --coverage": "jest --coverage",
+        "start": "npm run build && node dist dist/main.js",
+        "build": "rimraf ./dist && tsc",
+        "dev:js": "nodemon src/main.js localhost 8080",
+        "dev:build-tsc": "npx tsc --init --outdir dist/ --rootDir src",
+        "dev": "nodemon"
+    },
+    "author": "emi",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^3.0.2",
+        "express": "^4.21.2",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.10.2",
+        "uuid": "^11.1.0",
+        "winston": "^3.17.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/jest": "^29.5.14",
+        "@types/jsonwebtoken": "^9.0.9",
+        "@types/node": "^22.13.5",
+        "jest": "^29.7.0",
+        "nodemon": "^3.1.9",
+        "supertest": "^7.0.0",
+        "ts-jest": "^29.2.6",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.3"
+    }
+}
