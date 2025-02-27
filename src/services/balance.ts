@@ -1,4 +1,5 @@
 import { AccountSchema } from "../db/account.schema"
+import { convertToCurrencyNumber } from "../lib";
 
 export class BalanceService {
     constructor() { };
@@ -13,10 +14,7 @@ export class BalanceService {
                 : '';
         if (!currency) throw 'Currency error.'
 
-        const balanceFormatted = new Intl.NumberFormat(
-            "en-US",
-            { style: "currency", currency: "USD" }
-        ).format(account.balance || 0);
+        const balanceFormatted = convertToCurrencyNumber(account.balance || 0);
 
         return {
             accountNumber: account.accountNumber,
