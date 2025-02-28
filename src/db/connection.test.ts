@@ -1,4 +1,5 @@
 /** Testeo asincrono para comprobar conexion con la db */
+import mongoose from "mongoose";
 import { ENV } from "../config";
 import { MongoConnection } from "./connection";
 
@@ -16,9 +17,11 @@ describe(
                         databaseName: ENV.MONGO_DB_NAME!
                     })
 
+                    //console.log('oBJETO connected: ', connected)
                     expect(connected).toBe(true);
 
                 } catch (error) {
+                    //console.log('ERROR EN EL TEST DE CONEXION: ', error)
 
                 }
 

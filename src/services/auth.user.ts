@@ -7,15 +7,17 @@ export class AuthUserService {
     constructor() { };
 
     public async userAuthentication(credentials: any) {
-        const user = await UserSchema.findOne({ dni: credentials.dni });
+        try {
+            if(!credentials) throw 'Error no credentials'
 
-        if (user) {
-            const pin: string = user.pin || '';
+            const user = await UserSchema.findOne({ dni: credentials.dni });
+
+            const pin: string = user?.pin || '';
             const isMatch = pinEncritor.compare(credentials.pin, pin);
 
             if (!isMatch) throw 'Invalid credentials.'
 
-            const accounts = await AccountSchema.find({ fk_userId: user.id })
+            const accounts = await AccountSchema.find({ fk_userId: user?.id })
 
             if (!accounts) throw 'Accounts failed.'
 
@@ -34,18 +36,22 @@ export class AuthUserService {
                 accountsFound.push(account)
             })
 
-            const token = await JWTGenerator.generateToken(user.id);
+            const token = await JWTGenerator.generateToken(user?.id);
 
             return {
                 user: {
-                    first_name: user.firstName,
-                    last_name: user.lastName
+                    first_name: user?.firstName,
+                    last_name: user?.lastName
                 },
                 accounts: accountsFound,
                 token: token
             }
 
-        } else { throw 'User not found' }
+        } catch {
+            throw 'User not found'
+        }
+
+
 
 
     }

@@ -1,5 +1,8 @@
 export { UserModel } from './user.model';
 export { AccountModel } from './account.model';
-export { ProfleBanckModel } from './profile.bank';
 
+/** Dto */
+export { AuthenticationDTO } from './authentication.dto';
+
+/** Entities */
 export { LogEntity, LogSeverityLevel } from './log.entity';
