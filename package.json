@@ -5,8 +5,9 @@
     "main": "main.ts",
     "scripts": {
         "test": "jest",
-        "test --watch": "jest --watch",
-        "test --coverage": "jest --coverage",
+        "test:initconfig": "jest --init",
+        "test:watch": "jest --watch ",
+        "test:coverage": "jest --coverage",
         "start": "npm run build && node dist dist/main.js",
         "build": "rimraf ./dist && tsc",
         "dev:js": "nodemon src/main.js localhost 8080",
@@ -17,6 +18,8 @@
     "license": "ISC",
     "dependencies": {
         "bcryptjs": "^3.0.2",
+        "dotenv": "^16.4.7",
+        "env-var": "^7.5.0",
         "express": "^4.21.2",
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.10.2",
@@ -24,6 +27,7 @@
         "winston": "^3.17.0"
     },
     "devDependencies": {
+        "@babel/preset-typescript": "^7.26.0",
         "@types/express": "^5.0.0",
         "@types/jest": "^29.5.14",
         "@types/jsonwebtoken": "^9.0.9",

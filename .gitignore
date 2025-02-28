@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,expressionengine,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node,expressionengine,windows
 
+.env.testing
+.env.test
+logs-all.log
+jest.config.ts
+
 ### ExpressionEngine ###
 .DS_Store
 
